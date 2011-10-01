@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotobucketNet", "PhotobucketNet\PhotobucketNet.csproj", "{92252693-D5F6-41E6-8A1D-BDCE4591C8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PBNetTestDialog", "PBNetTestDialog\PBNetTestDialog.csproj", "{F865AA77-0276-40ED-B609-08381169721D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92252693-D5F6-41E6-8A1D-BDCE4591C8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92252693-D5F6-41E6-8A1D-BDCE4591C8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92252693-D5F6-41E6-8A1D-BDCE4591C8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92252693-D5F6-41E6-8A1D-BDCE4591C8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F865AA77-0276-40ED-B609-08381169721D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F865AA77-0276-40ED-B609-08381169721D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F865AA77-0276-40ED-B609-08381169721D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F865AA77-0276-40ED-B609-08381169721D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
