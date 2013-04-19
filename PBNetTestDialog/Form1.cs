@@ -117,7 +117,8 @@ namespace PBNetTestDialog
       {
          try
          {
-            Program.Instance.Photobucket.GetCurrentUser();
+            var user = Program.Instance.Photobucket.GetCurrentUser();
+            Username.Text = user.Username;
             MessageBox.Show( "GetUser Succeeded" );
          }
          catch (PhotobucketWebException)
@@ -247,22 +248,6 @@ namespace PBNetTestDialog
          }
       }
 
-      private void RenameAlbum_Click(object sender, EventArgs e)
-      {
-         try
-         {
-           
-         }
-         catch (PhotobucketWebException)
-         {
-            MessageBox.Show("Network problems");
-         }
-         catch (PhotobucketApiException apiEx)
-         {
-            MessageBox.Show("Error Code: " + apiEx.ErrorCode.ToString() + ": " + apiEx.ResponseMessage);
-         }
-      }
-
       private void GetRecentCurrentUserMedia_Click(object sender, EventArgs e)
       {
          try
@@ -366,6 +351,78 @@ namespace PBNetTestDialog
          {
             MessageBox.Show( "Error Code: " + apiEx.ErrorCode.ToString() + ": " + apiEx.ResponseMessage );
          }
+      }
+
+      private void DeleteAlbum_Click(object sender, EventArgs e)
+      {
+          try
+          {
+              var album = Program.Instance.Photobucket.GetUsersAlbum(Username.Text, Album.Text);
+              Program.Instance.Photobucket.DeleteAlbum(album);
+              MessageBox.Show("Deleted Album Success");
+          }
+          catch (PhotobucketWebException)
+          {
+              MessageBox.Show("Network problems");
+          }
+          catch (PhotobucketApiException apiEx)
+          {
+              MessageBox.Show("Error Code: " + apiEx.ErrorCode.ToString() + ": " + apiEx.ResponseMessage);
+          }
+      }
+
+      private void GetAlbumPrivacy_Click(object sender, EventArgs e)
+      {
+          try
+          {
+              var album = Program.Instance.Photobucket.GetUsersAlbum(Username.Text, Album.Text);
+              var privacy = Program.Instance.Photobucket.GetAlbumsPrivacySettings(album);
+              MessageBox.Show(privacy.ToString());
+          }
+          catch (PhotobucketWebException)
+          {
+              MessageBox.Show("Network problems");
+          }
+          catch (PhotobucketApiException apiEx)
+          {
+              MessageBox.Show("Error Code: " + apiEx.ErrorCode.ToString() + ": " + apiEx.ResponseMessage);
+          }
+      }
+
+      private void MakeAlbumPublic_Click(object sender, EventArgs e)
+      {
+          try
+          {
+              var album = Program.Instance.Photobucket.GetUsersAlbum(Username.Text, Album.Text);
+              Program.Instance.Photobucket.MakeAlbumPublic(album);
+              MessageBox.Show("Success");
+          }
+          catch (PhotobucketWebException)
+          {
+              MessageBox.Show("Network problems");
+          }
+          catch (PhotobucketApiException apiEx)
+          {
+              MessageBox.Show("Error Code: " + apiEx.ErrorCode.ToString() + ": " + apiEx.ResponseMessage);
+          }
+      }
+
+      private void MakeAlbumPrivate_Click(object sender, EventArgs e)
+      {
+          try
+          {
+              var album = Program.Instance.Photobucket.GetUsersAlbum(Username.Text, Album.Text);
+              Program.Instance.Photobucket.MakeAlbumPrivate(album, "password");
+              MessageBox.Show("Success");
+          }
+          catch (PhotobucketWebException)
+          {
+              MessageBox.Show("Network problems");
+          }
+          catch (PhotobucketApiException apiEx)
+          {
+              MessageBox.Show("Error Code: " + apiEx.ErrorCode.ToString() + ": " + apiEx.ResponseMessage);
+          }
       }
    }
 }

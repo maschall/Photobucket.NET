@@ -210,7 +210,7 @@ namespace PhotobucketNet
       #region Get Album Privacy Settings
       private Privacy GetAlbumsPrivacySettings(string albumPath)
       {
-         string relativePath = GenerateRelativeAlbumUrl(albumPath);
+         string relativePath = GenerateRelativeAlbumPrivacyUrl(albumPath);
 
          QueryParameterList paramaters = new QueryParameterList();
          paramaters.Add(new QueryParameter(_format, "xml"));
@@ -267,7 +267,7 @@ namespace PhotobucketNet
       #region Update Album Privacy Settings
       private Privacy UpdateAlbumPrivacySettings(string albumPath, Privacy privacySetting, string password)
       {
-         string relativePath = GenerateRelativeAlbumUrl(albumPath);
+          string relativePath = GenerateRelativeAlbumPrivacyUrl(albumPath);
 
          QueryParameterList paramaters = new QueryParameterList();
          paramaters.Add(new QueryParameter(_format, "xml"));
@@ -341,9 +341,14 @@ namespace PhotobucketNet
          return GenerateAlbumIdentifier(albumName);
       }
 
+      private string GenerateRelativeAlbumPrivacyUrl(string albumName)
+      {
+          return GenerateRelativeAlbumUrl(albumName) + "/" + _privacy;
+      }
+
       private string GenerateAlbumIdentifier(string albumName)
       {
-         return _albumUrl + OAuth.UrlEncode(OAuth.UrlEncode(albumName));
+         return _albumUrl + "/" + OAuth.UrlEncode(OAuth.UrlEncode(albumName));
       }
       #endregion
 
@@ -354,7 +359,7 @@ namespace PhotobucketNet
       private const string _updateAlbumPrivacyMethod = "POST";
       private const string _renameAlbumMethod = "PUT";
       private const string _deleteAlbumMethod = "DELETE";
-      private const string _albumUrl = "album/";
+      private const string _albumUrl = "album";
       private const string _name = "name";
       private const string _format = "format";
       private const string _paginated = "paginated";
